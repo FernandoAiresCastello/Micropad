@@ -123,16 +123,23 @@ namespace Micropad
         {
             try
             {
-                Notebook notebook = new Notebook();
-                notebook.Load(path);
+                if (File.Exists(path))
+                {
+                    Notebook notebook = new Notebook();
+                    notebook.Load(path);
 
-                RecentFiles.Add(path);
-                RecentFiles.Save();
-                UpdateRecentFilesList();
-                Hide();
+                    RecentFiles.Add(path);
+                    RecentFiles.Save();
+                    UpdateRecentFilesList();
+                    Hide();
 
-                MainWindow mainWindow = new MainWindow(this, notebook);
-                mainWindow.Show(this);
+                    MainWindow mainWindow = new MainWindow(this, notebook);
+                    mainWindow.Show(this);
+                }
+                else
+                {
+                    Alert.Warning("Notebook file not found: " + path);
+                }
             }
             catch (Exception ex)
             {

@@ -58,10 +58,6 @@ namespace Micropad
             Application.Exit();
         }
 
-        private void SaveNotebook()
-        {
-        }
-
         public void PageSelected(NotebookPage page)
         {
             if (!TextPanel.Enabled)
@@ -81,6 +77,10 @@ namespace Micropad
                 TextPanel.Content = null;
                 TextPanel.Enabled = false;
             }
+        }
+
+        private void SaveNotebook()
+        {
         }
     }
 }
